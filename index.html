@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const darkModeSwitch = document.getElementById('darkModeSwitch');
+            if (darkModeSwitch.checked) {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+        }
+    </script>
     <title>AMalikBlock - Social Media</title>
     <style>
         body {
@@ -57,26 +68,54 @@
             margin: 10px auto;
         }
 
-        /* Style for the mode switch button */
+        /* Style for the mode switch */
         .mode-switch {
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
+            display: flex;
+            align-items: center;
         }
+
+        .switch-input {
+            display: none;
+        }
+
+        .switch-label {
+            cursor: pointer;
+            width: 40px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .switch-label::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            transform: translateX(0);
+            transition: transform 0.3s;
+        }
+
+        .switch-input:checked + .switch-label::after {
+            transform: translateX(20px);
+        }
+
         .dark-mode {
             background-color: black;
         }
-
-
         
     </style>
+        
 </head>
 <body>
-    <button class="mode-switch" onclick="toggleMode()">🌞</button>
+    <button class="mode-switch" onclick="toggleMode()"></button>
     <div class="main-header">
         <h1>AMalikBlock</h1>
     </div>
@@ -167,17 +206,11 @@
             </a>
         </div>
     </div>
-    <script>
-        function toggleMode() {
-            const body = document.body;
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                document.querySelector('.mode-switch').textContent = '🌞';
-            } else {
-                body.classList.add('dark-mode');
-                document.querySelector('.mode-switch').textContent = '🌙';
-            }
-        }
-    </script>
+
+    <label class="mode-switch">
+        <input type="checkbox" class="switch-input" id="darkModeSwitch" onchange="toggleMode()">
+        <span class="switch-label"></span>
+    </label>
+
 </body>
 </html>
