@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            transition: background-color 0.3s ease;
         }
 
         .main-header {
@@ -40,7 +41,7 @@
             color: #fff;
             border: none;
             padding: 20px 30px;
-            border-radius: 5px;
+            border-radius: 10px; /* Make the border radius bigger for rounder buttons */
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -55,9 +56,27 @@
             height: auto;
             margin: 10px auto;
         }
+
+        /* Style for the mode switch button */
+        .mode-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .dark-mode {
+            background-color: black;
+        }
+
+
+        
     </style>
 </head>
 <body>
+    <button class="mode-switch" onclick="toggleMode()">🌞</button>
     <div class="main-header">
         <h1>AMalikBlock</h1>
     </div>
@@ -148,5 +167,17 @@
             </a>
         </div>
     </div>
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                document.querySelector('.mode-switch').textContent = '🌞';
+            } else {
+                body.classList.add('dark-mode');
+                document.querySelector('.mode-switch').textContent = '🌙';
+            }
+        }
+    </script>
 </body>
 </html>
