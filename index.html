@@ -18,27 +18,27 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             transition: background-color 0.3s ease;
         }
 
-        .main-header {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #3498db;
-        }
-
         .main-header h1 {
-            color: #fff;
+            color: #ffffff;
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            position: relative;
         }
 
         .button-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-evenly;
+            justify-content: center;
         }
 
         .social-button {
+            width: calc(50% - 20px);
             margin: 10px;
             text-align: center;
         }
@@ -47,28 +47,39 @@
             text-decoration: none;
         }
 
+        @media (min-width: 768px) {
+            .button-container {
+                justify-content: space-evenly;
+            }
+
+            .social-button {
+                width: calc(33.33% - 20px);
+            }
+        }
+
+        /* Common button styles for both modes */
         .social-button button {
-            background-color: #3498db;
-            color: #fff;
             border: none;
             padding: 20px 30px;
-            border-radius: 10px; /* Make the border radius bigger for rounder buttons */
+            width: 100%; /* Fixed width */
+            height: 100px; /* Fixed height */
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .social-button button:hover {
-            background-color: #2980b9;
+            background-color: #000000;
+            color: #f4f4f4;
         }
 
         .social-logo {
             display: block;
-            width: 100px; /* Adjust the size as needed */
+            width: 100px;
             height: auto;
             margin: 10px auto;
         }
 
-        /* Style for the mode switch */
         .mode-switch {
             position: absolute;
             top: 20px;
@@ -107,10 +118,31 @@
             transform: translateX(20px);
         }
 
-        .dark-mode {
-            background-color: black;
+        body:not(.dark-mode) {
+            background-color: #f4f4f4;
         }
-        
+
+        .main-header:not(.dark-mode) {
+            background-color: #878787;
+        }
+
+        .dark-mode {
+            background-color: #000000;
+        }
+
+        .main-header.dark-mode h1 {
+            color: #fff;
+        }
+
+        .social-button button.dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        .social-button button.dark-mode:hover {
+            background-color: #444;
+            color: #ccc;
+        }
     </style>
         
 </head>
@@ -122,7 +154,7 @@
     <div class="button-container">
         <div class="social-button">
             <a href="https://www.facebook.com/YOUR_PAGE_URL" target="_blank">
-                <button>Facebook Page</button>
+                <button >Facebook Page</button>
             </a>
         </div>
         <div class="social-button">
