@@ -13,12 +13,23 @@
                 body.classList.remove('dark-mode');
             }
         }
+        
+        
     </script>
     <title>AMalikBlock - Social Media</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             transition: background-color 0.3s ease;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            background-color: #000000; /* All-black background color */
+        }
+
+        .info-banner {
+            padding-left: 10px;
+            margin: 1px
+
         }
 
         .main-header h1 {
@@ -28,46 +39,54 @@
             text-transform: uppercase;
             letter-spacing: 0.1px;
             margin: 0;
+            padding: 10px;
             position: static ;
-        
         }
+
+
 
         .button-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line */
             justify-content: center;
         }
 
         .social-button {
-            width: calc(50% - 20px);
-            margin: 10px;
+            margin: 5px;
             text-align: center;
+            flex: 1; /* Equal width for all buttons */
+            max-width: 150px; /* Limit button width on smaller screens */
         }
 
         .social-button a {
             text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        @media (min-width: 768px) {
-            .button-container {
-                justify-content: space-evenly;
-            }
-
-            .social-button {
-                width: calc(33.33% - 20px);
-            }
+        .social-button a img {
+            width: 30px; /* Adjust the size of the icons as needed */
+            height: 30px;
+            transition: filter 0.3s ease; /* Add transition for smooth hover effect */
         }
 
-        /* Common button styles for both modes */
+        .social-button a:hover img {
+            filter: brightness(100); /* Change the image to white on hover */
+        }
+
         .social-button button {
             border: solid;
-            padding: 20px 30px;
-            width: 100%; /* Fixed width */
-            height: 100px; /* Fixed height */
+            padding: 1px 1px;
+            width: 35px; /* Fixed width */
+            height: 35px; /* Fixed height */
             border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.1s ease, color 0.3s ease;
             color: #000000; /* Light mode button text color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .social-button button:hover {
@@ -75,19 +94,16 @@
             color: #f4f4f4; /* Light mode button text color */
         }
 
-        .social-logo {
-            display: block;
-            width: 100px;
-            height: auto;
-            margin: 10px auto;
-        }
-
         .mode-switch {
             position: absolute;
-            top: 20px;
+            top: 70px;
             right: 20px;
             display: flex;
             align-items: center;
+        }
+
+        button.mode-switch{
+            visibility: hidden;
         }
 
         .switch-input {
@@ -130,16 +146,23 @@
         }
 
         .main-header:not(.dark-mode) {
-            background-color: #000000; /* Light mode header background color */
+            background-color: #1D2330; /* Light mode header background color */
+        
+            
         }
 
         .dark-mode {
-            background-color: #000000; /* Dark mode background color */
+            background-color: #1D2330; /* Dark mode background color */
         }
 
         .main-header.dark-mode h1 {
             color: #090909; /* Dark mode text color */
+            
         }
+        .dark-mode p{
+            color: #fff;
+        }
+
 
         .social-button button.dark-mode {
             background-color: #222; /* Dark mode button background color */
@@ -150,107 +173,228 @@
             background-color: #362850; /* Dark mode button background color on hover */
             color: #ccc; /* Dark mode button text color on hover */
         }
+
+        /* Media Queries */
+
+        /* Add responsive styles for smaller screens */
+        @media (max-width: 768px) {
+            .main-header h1 {
+                font-size: 2rem; /* Decrease font size for smaller screens */
+                padding: 5px; /* Adjust header padding */
+            }
+            .social-button {
+                flex-basis: 0%; /* Two buttons per row on smaller screens */
+                max-width: none; /* Remove max-width on smaller screens */
+            }
+            .mode-switch {
+            position: absolute;
+            top: 58px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
         
+        .switch-input {
+            display: none;
+        }
+        .switch-label {
+            cursor: pointer;
+            width: 60px; /* Increased label width */
+            height: 30px; /* Increased label height */
+            background-color: #ccc;
+            border-radius: 30px; /* Increased border radius */
+            position: relative;
+            transition: background-color 0.3s; /* Added transition for hover effect */
+        }
+
+        .switch-label:hover {
+            background-color: #999; /* Hover effect for the label */
+        }
+
+        .switch-label::after {
+            content: "";
+            position: absolute;
+            width: 30px; /* Increased switch size */
+            height: 30px; /* Increased switch size */
+            background-color: #fff;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            transform: translateX(0);
+            transition: transform 0.3s;
+        }
+
+        .switch-input:checked + .switch-label::after {
+            transform: translateX(30px); /* Adjusted transform distance for the larger switch */
+        }
+        
+        }
+        /* slideshow */
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .slideshow-slide {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+        }
     </style>
         
 </head>
 <body>
     <button class="mode-switch" onclick="toggleMode()"></button>
-    <div class="main-header">
-        <h1>AMalikBlock</h1>
-    </div>
-    <div class="button-container">
-        <div class="social-button">
-            <a href="https://www.facebook.com/YOUR_PAGE_URL" target="_blank">
-                <button >Facebook Page</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.facebook.com/groups/YOUR_GROUP_URL" target="_blank">
-                <button ">Facebook Group</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.instagram.com/YOUR_INSTAGRAM" target="_blank">
-                <button>Instagram</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.example.com/threads" target="_blank">
-                <button>Threads</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://twitter.com/AMalikBlock" target="_blank">
-                <button>Twitter</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://bluesky.com" target="_blank">
-                <button>Bluesky</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.youtube.com/channel/UC5V0eM7g-iYXV_TFifdPTtQ" target="_blank">
-                <button>YouTube</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.tiktok.com/@amalikblock" target="_blank">
-                <button>TikTok</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.pinterest.co.uk/amaliktech/?actingBusinessId=949344933859476670" target="_blank">
-                <button>Pinterest</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.reddit.com/user/AMalikBlock" target="_blank">
-                <button>Reddit</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.example.com/snapchat" target="_blank">
-                <button>Snapchat</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://patreon.com/AMalikBlock" target="_blank">
-                <button>Patreon</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://github.com/AMalikBlock" target="_blank">
-                <button>Github</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://coinmarketcap.com/community/profile/AMalikBlock/" target="_blank">
-                <button>CoinMarketCap</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.example.com/coingecko" target="_blank">
-                <button>Coingecko</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://t.me/+9cF6dQaKbBFmNDg0" target="_blank">
-                <button>Telegram</button>
-            </a>
-        </div>
-        <div class="social-button">
-            <a href="https://www.tumblr.com/amalikblock" target="_blank">
-                <button>Tumblr</button>
-            </a>
-        </div>
-    </div>
 
     <label class="mode-switch">
         <input type="checkbox" class="switch-input" id="darkModeSwitch" onchange="toggleMode()">
         <span class="switch-label"></span>
     </label>
+
+    <div class="info-banner">
+       <p><i><b>A Journey into the World of Blockchain</b></i>.</p> 
+    </div>
+
+    <div class="main-header">
+        <h1>AMalikBlock</h1>
+    </div>
+    <div style="height: 42px; background-color: #000; overflow: hidden; box-sizing: border-box; border: 1px solid #282E3B; border-radius: 4px; text-align: right; line-height: 14px; block-size: 62px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #262B38; padding: 0; margin: 0; width: 100%;">
+        <div style="height: 40px; padding: 0; margin: 0; width: 100%;">
+            <iframe src="https://widget.coinlib.io/widget?type=horizontal_v2&theme=dark&pref_coin_id=1505&invert_hover=" width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border: 0; margin: 0; padding: 0;"></iframe>
+        </div>
+        <div style="color: #fff; line-height: 14px; font-weight: 400; font-size: 11px; box-sizing: border-box; padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;">
+            <a href="https://coinlib.io" target="_blank" style="font-weight: 500; color: #fff; text-decoration: none; font-size: 11px;">Cryptocurrency Prices</a> by Coinlib
+        </div>
+    </div>
+
+    <div class="button-container">
+        <div class="social-button">
+            <a href="https://www.facebook.com/YOUR_PAGE_URL" target="_blank">
+                <button>
+                    <img src="/images/Facebook_logo.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.facebook.com/groups/YOUR_GROUP_URL" target="_blank">
+                <button>
+                    <img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Facebook_svg-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.instagram.com/YOUR_INSTAGRAM" target="_blank">
+                <button>
+                    <img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Instagram_svg-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.eds" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://twitter.com/AMalikBlock" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://bluesky.com" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.youtube.com/channel/UC5V0eM7g-iYXV_TFifdPTtQ" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.tiktok.com/@amalikblock" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.pinterest.co.uk/amaliktech/?actingBusinessId=949344933859476670" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.reddit.com/user/AMalikBlock" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.example.com/snapchat" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://patreon.com/AMalikBlock" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://github.com/AMalikBlock" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://coinmarketcap.com/community/profile/AMalikBlock/" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.example.com/coingecko" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://t.me/+9cF6dQaKbBFmNDg0" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+        <div class="social-button">
+            <a href="https://www.tumblr.com/amalikblock" target="_blank">
+                <button>
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-media-2247/100/Threads-2-1024.png" width="50" height="50" viewBox="0 0 50 50">
+                </button>
+            </a>
+        </div>
+    </div>
+    
+    
+
+    
 
 </body>
 </html>
