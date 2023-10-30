@@ -13,8 +13,7 @@
                 body.classList.remove('dark-mode');
             }
         }
-        
-        
+
     </script>
     <title>AMalikBlock - Social Media</title>
     <style>
@@ -170,9 +169,41 @@
         }
 
         .social-button button.dark-mode:hover {
-            background-color: #362850; /* Dark mode button background color on hover */
+            background-color: #1D2330; /* Dark mode button background color on hover */
             color: #ccc; /* Dark mode button text color on hover */
         }
+
+        .portfolio-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .portfolio-button {
+            margin: 10px;
+            width: 600px;
+            height: 600px;
+            background-color: #232b3d; /* Change to your preferred color */
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all .6s;
+
+        }
+
+        .portfolio-buttons:hover .portfolio-button{
+        opacity: .5;
+        filter: blur(30px);
+}
+
+        .portfolio-buttons .portfolio-button:hover{
+            opacity: 1;
+            filter: blur(0.5px);
+            transform: scale(1.03);
+}
 
         /* Media Queries */
 
@@ -228,20 +259,6 @@
             transform: translateX(30px); /* Adjusted transform distance for the larger switch */
         }
         
-        }
-        /* slideshow */
-        .slideshow-container {
-            max-width: 100%;
-            position: relative;
-            margin: 0 auto;
-        }
-
-        .slideshow-slide {
-            display: none;
-        }
-
-        img {
-            width: 100%;
         }
     </style>
         
@@ -391,6 +408,14 @@
             </a>
         </div>
     </div>
+
+      <!-- Add the portfolio buttons section -->
+      <div class="portfolio-buttons">
+        <button class="portfolio-button">NFT Marketplace</button>
+        <button class="portfolio-button">Solidty</button>
+        <button class="portfolio-button">Coming Soon</button>
+    </div>
+    
     
     
 
