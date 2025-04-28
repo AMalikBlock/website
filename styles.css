@@ -102,7 +102,6 @@ nav ul li a:hover {
 
 
 
-
 .icon-grid {
   display: flex;
   flex-direction: column;
@@ -121,30 +120,36 @@ nav ul li a:hover {
 .icon-card {
   background-color: #ddd;
   border-radius: 30px;
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .icon-card img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 20px;
+  transition: transform 0.3s;
 }
 
 .icon-card:hover {
   background-color: #bbb;
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.icon-card:hover img {
+  transform: scale(1.1);
 }
 
 .icon-name {
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-family: 'Cal Sans', sans-serif;
   color: inherit;
 }
