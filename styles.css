@@ -1,13 +1,66 @@
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   text-align: center;
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 h1 {
   margin-top: 50px;
+}
+
+header h1.glitch {
+  font-size: 2.5em;
+  position: relative;
+  color: #000;
+  animation: glitch 1s infinite;
+  font-family: 'Caveat', cursive;
+  cursor: pointer;
+}
+
+header h1.glitch::before,
+header h1.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #f00;
+  clip: rect(0, 0, 0, 0);
+}
+
+header h1.glitch:hover::before {
+  clip: rect(0, 900px, 0, 0);
+  animation: glitchTop 0.5s infinite linear alternate-reverse;
+}
+
+header h1.glitch:hover::after {
+  clip: rect(0, 900px, 0, 0);
+  animation: glitchBottom 0.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+  0% { transform: none; }
+  20% { transform: skew(0.5deg); }
+  40% { transform: skew(-0.5deg); }
+  60% { transform: skew(0.5deg); }
+  80% { transform: skew(-0.5deg); }
+  100% { transform: none; }
+}
+
+@keyframes glitchTop {
+  0% { transform: translate(0); }
+  50% { transform: translate(-5px, -5px); }
+  100% { transform: translate(5px, 5px); }
+}
+
+@keyframes glitchBottom {
+  0% { transform: translate(0); }
+  50% { transform: translate(5px, 5px); }
+  100% { transform: translate(-5px, -5px); }
 }
 
 nav ul {
@@ -26,8 +79,26 @@ nav ul li a {
   background-color: #ddd;
   padding: 10px 20px;
   border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 nav ul li a:hover {
   background-color: #bbb;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111;
+    color: #eee;
+  }
+  nav ul li a {
+    background-color: #333;
+    color: #eee;
+  }
+  nav ul li a:hover {
+    background-color: #555;
+  }
+  header h1.glitch {
+    color: #eee;
+  }
 }
