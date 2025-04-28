@@ -102,6 +102,8 @@ nav ul li a:hover {
 
 
 
+
+
 .icon-grid {
   display: flex;
   flex-direction: column;
@@ -159,4 +161,31 @@ nav ul li a:hover {
     flex-direction: row;
     justify-content: center;
   }
+}
+
+
+
+
+
+
+
+.highlight-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: #ffd54f;
+  z-index: -1;
+  transition: width 0.5s ease;
+}
+
+.highlight-reveal:hover::before {
+  width: 100%;
 }
