@@ -1,0 +1,64 @@
+/* Import main layout like dark/light mode */
+@import url('styles.css');
+
+.chipbit-main {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.chipbit-main h1 {
+  font-family: 'Cal Sans', sans-serif;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.chipbit-description {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.chipbit-image {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.features h2 {
+  font-family: 'Cal Sans', sans-serif;
+  font-size: 2em;
+  margin-top: 40px;
+}
+
+.features ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features ul li {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.visit-button {
+  display: inline-block;
+  margin-top: 30px;
+  background-color: #333;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.visit-button:hover {
+  background-color: #555;
+}
+
+/* Dark Mode custom tweaks */
+body.dark-mode .chipbit-description {
+  color: #ccc;
+}
